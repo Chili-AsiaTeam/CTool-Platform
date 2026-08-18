@@ -1,0 +1,37 @@
+<html data-type="html" data-identifier="8ca9028e-87db-4521-a39c-70e17fc304ed" data-title="GraFx 多模板 JSON 合并工具" data-version="1"><head>
+    <meta charset="UTF-8">
+	<link href="../css/merger.css" type="text/css" rel="stylesheet"/>
+    <title>GraFx Multi-JSON Merger</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>GraFx Json Merger</h1>
+    <p class="description">The first uploaded file will serve as the main container, and the contents of all subsequently added templates will be appended to it in sequence. You can add an unlimited number of files to be merged.</p>
+    
+    <div class="upload-group" id="fileInputsContainer">
+        <div class="file-box">
+            <div class="box-header">
+                <label>Main template (baseline JSON, e.g., s1.json)</label>
+            </div>
+            <input type="file" class="json-file-input" accept=".json">
+        </div>
+        <div class="file-box">
+            <div class="box-header">
+                <label>Sub-template 1 (e.g., s2.json)</label>
+            </div>
+            <input type="file" class="json-file-input" accept=".json">
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button id="addFileBtn" class="btn-add">Add more templates</button>
+        <button id="mergeBtn" class="btn-merge">Merge and download JSON</button>
+    </div>
+
+    <div id="log"></div>
+</div>
+
+</body>
+<script src="../js/merger.js" type="text/javascript"></script>
+</html>

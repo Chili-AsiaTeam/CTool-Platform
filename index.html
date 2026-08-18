@@ -1,51 +1,256 @@
-<html data-type="html" data-identifier="4f5c6e9b-124b-494c-ba81-ca71a90dadf7" data-title="Layout Restrictive Reorder Tool" data-version="3">
-<head>
-<link href="./css/layout_Reorder.css" type="text/css" rel="stylesheet"/>
+<html data-type="html" data-identifier="8f2a912b-34c8-47bc-a567-28d8b188c031" data-title="Light Tech Hub Dashboard" data-version="1" width="1200" height="800"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTOOL Platform</title>
+    <link href="./css/toolPlatform.css" type="text/css" rel="stylesheet"/>
+	<link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 <body>
 
+    <!-- 背景科技细线网格 -->
+    <div class="grid-background"></div>
+	
+	<!-- Technical Grid Layer -->
+	<div class="grid-overlay"></div>
+	
+	<!-- Wave Canvas Container -->
+	<div id="canvas-wrapper">
+	    <canvas id="fluid-canvas"></canvas>
+	</div>
+	
+
+    <!-- 顶栏导航 -->
     <header>
-        <h1 id="main-title">布局同级排序工具 (Strict Layout Reorder)</h1>
-        <p id="sub-title">子布局只能在相同的父级分类内部上下调整位置，严禁移出各自目录层级。支持导入与导出 JSON 文件。</p>
+        <div class="logo-container">
+            <div class="logo-icon">
+                <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> -->
+				<p>C</p>
+            </div>
+            <h1 id="main-title">CTOOL Platform</h1>
+        </div>
+       <!-- <div class="system-status">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span id="status-text">系统状态：最佳</span>
+            </div>
+            <div id="time-display">--:--:--</div>
+        </div> -->
     </header>
 
-    <div class="main-container">
-        <!-- 左侧树状层级 -->
-        <div class="pane left-pane">
-            <div class="pane-header">
-                <span id="layer-title">图层/布局结构</span>
-            </div>
-            <div class="pane-content" id="tree-root">
-                <div style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-top: 50px;" id="placeholder-msg">
-                    请在右侧粘贴 JSON 数据或点击“上传 JSON”导入文件来初始化视图。
-                </div>
-            </div>
+    <!-- 主界面内容区 -->
+    <main>
+        <div class="hero-section">
+            <h2 id="hero-subtitle" class="shiny-text">Play with efficiency</h2>
+            <p id="hero-desc">We will create various interesting tools to improve team efficiency and working methods.</p>
         </div>
 
-        <!-- 右侧 JSON 输入及输出 -->
-        <div class="pane right-pane right_pane">
-            <div class="pane-header pane_oper_head">
-                <span id="json-title">操作按钮</span>
-               
-            </div>
-			<div class="flex-row flex-row_1">
-			    <button class="secondary btn_1" id="btn-upload-trigger">上传 JSON</button>
-			    <input type="file" id="file-input" accept=".json,text/plain">
-			    <button class="secondary btn_1" id="btn-clear">清空</button>
-				<button class="secondary btn_1 reset_btn" id="btn-reset" disabled="">重置排序</button>
-			    <!-- <button id="btn-copy">复制 JSON</button> -->
-			    <button class="success btn_1" id="btn-download">下载 JSON</button>
-			</div>
-            <div class="pane-content pane_cn">
-                <div class="textarea-container">
-                    <textarea id="json-input" spellcheck="false" placeholder="在此粘贴 JSON 文本，或通过上方按钮直接上传 JSON 文件..."></textarea>
-                    <div class="btn-group">
-                        <span id="status-msg" style="margin-left: 10px; font-size: 0.85rem; align-self: center; color: #4ec9b0;"></span>
+        <!-- 功能模块网格 -->
+        <div class="grid-container">
+            
+            <!-- AI 模型计算 -->
+            <div class="card" id="merger" data-module="ai" id="card-ai" >
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <!-- 主文件框架 -->
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <!-- 文件内部的“合并/汇聚”箭头图标 -->
+                          <path d="M12 18v-6"></path>
+                          <path d="m9 15 3-3 3 3"></path>
+                        </svg>
                     </div>
+                    <span class="card-badge">Chili tool</span>
+                </div>
+                <div class="card-body">
+                    <h3 id="ai-title">Chili GraFX Json Merger</h3>
+                    <p id="ai-desc"> The Chili GraFx Multi-Template Merger is a lightweight, local single-page web application. Its primary function is to use primarily to merge secondary directory layouts. </p>
+                </div>
+                <div class="card-footer">
+                    <span>use the tool</span>
+                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
             </div>
+			
+			<div class="card" data-module="ai" id="card-ai">
+			    <div class="card-header">
+			        <div class="card-icon">
+			            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			              <!-- 主文件框架 -->
+			              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+			              <polyline points="14 2 14 8 20 8"></polyline>
+			              <!-- 文件内部的“合并/汇聚”箭头图标 -->
+			              <path d="M12 18v-6"></path>
+			              <path d="m9 15 3-3 3 3"></path>
+			            </svg>
+			        </div>
+			        <span class="card-badge">Chili tool</span>
+			    </div>
+			    <div class="card-body">
+			        <h3 id="ai-title">Chili GraFX Json Merger Sec</h3>
+			        <p id="ai-desc">The Chili GraFx Multi-Template Merger is a lightweight, local single-page web application. Its primary function is to use primarily to merge tertiary directory content.</p>
+			    </div>
+			    <div class="card-footer">
+			        <span>use the tool</span>
+			        <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+			    </div>
+			</div>
+
+           <div class="card" data-module="ai" id="card-ai">
+               <div class="card-header">
+                   <div class="card-icon">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         <!-- 代表排序数据/条目的长短柱状线条 -->
+                         <path d="M11 5h10"></path>
+                         <path d="M11 9h7"></path>
+                         <path d="M11 13h4"></path>
+                         
+                         <!-- 代表升序/降序动作的上下箭头 -->
+                         <path d="M3 17l3 3 3-3"></path>
+                         <path d="M6 18V4"></path>
+                       </svg>
+                   </div>
+                   <span class="card-badge">Chili tool</span>
+               </div>
+               <div class="card-body">
+                   <h3 id="ai-title">Strict Layout Reorder_v1.1</h3>
+                   <p id="ai-desc">This tool is specifically designed for sorting layouts in Chili templates, addressing the issue that layout directories cannot be reordered within Chili templates.</p>
+               </div>
+               <div class="card-footer">
+                   <span>use the tool</span>
+                   <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+               </div>
+           </div>
+		   
+		   <div class="card" data-module="ai" id="card-ai">
+		       <div class="card-header">
+		           <div class="card-icon">
+		               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		                 <!-- 信封外框 -->
+		                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+		                 <!-- 信封折页/盖子 -->
+		                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+		               </svg>
+		           </div>
+		           <span class="card-badge">Regular tool</span>
+		       </div>
+		       <div class="card-body">
+		           <h3 id="ai-title">Outlook-html-editor</h3>
+		           <p id="ai-desc">This tool losslessly embeds HTML code into Outlook (web or app) for email delivery, bypassing the editor's layout limits to deliver polished, design‑rich emails.</p>
+		       </div>
+		       <div class="card-footer">
+		           <span>use the tool</span>
+		           <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+		       </div>
+		   </div>
+
+
+
+            <!-- 自动化 DevOps -->
+            <div class="card" data-module="inDev" id="card-devops">
+                <div class="card-header">
+                    <div class="card-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						  <!-- 表盘外圈 -->
+						  <circle cx="12" cy="12" r="10"></circle>
+						  <!-- 指在 12 点和 3 点之间的指针（等待状态） -->
+						  <polyline points="12 6 12 12 16 14"></polyline>
+						</svg>
+                    </div>
+                    <span class="card-badge">In Dev</span>
+                </div>
+                <div class="card-body">
+                    <h3 id="devops-title" class="more_tool_wait">More tools are </br> in development.</h3>
+                    <!-- <p id="devops-desc">支持一键流水线构建、K8s 容器编排与无缝热更新体验。</p> -->
+                </div>
+               <!-- <div class="card-footer">
+                    <span>进入模块</span>
+                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div> -->
+            </div>
+
+           <div class="card" data-module="inDev" id="card-devops">
+               <div class="card-header">
+                   <div class="card-icon">
+           			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+           			  <!-- 表盘外圈 -->
+           			  <circle cx="12" cy="12" r="10"></circle>
+           			  <!-- 指在 12 点和 3 点之间的指针（等待状态） -->
+           			  <polyline points="12 6 12 12 16 14"></polyline>
+           			</svg>
+                   </div>
+                   <span class="card-badge">In Dev</span>
+               </div>
+               <div class="card-body">
+                   <h3 id="devops-title" class="more_tool_wait">More tools are </br> in development.</h3>
+                   <!-- <p id="devops-desc">支持一键流水线构建、K8s 容器编排与无缝热更新体验。</p> -->
+               </div>
+              <!-- <div class="card-footer">
+                   <span>进入模块</span>
+                   <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+               </div> -->
+           </div>
+
         </div>
-    </div>
-</body>
-<script src="./js/layout_Reoder.js" type="text/javascript"></script>
-</html>
+    </main>
+    <div class="floot">
+		
+		<div class="infor_area">
+			<ul class="person_list">
+				<li>
+					<img src="img/Nico.png"/>
+					<p>Nico</p>
+				</li>
+				<li>
+					<img src="img/Max.png"/>
+					<p>Max</p>
+				</li>
+				<li>
+					<img src="img/Shuai.png"/>
+					<p>Shuai</p>
+				</li>
+				<li>
+					<img src="img/Garvin.png"/>
+					<p>Garvin</p>
+				</li>
+				<li>
+					<img src="img/Chika.png"/>
+					<p>Chika</p>
+				</li>
+			</ul>
+			<p class="support_text">Support by Chili China team</p>
+		</div>
+	</div>
+   
+    <script>
+        // 实时时钟更新
+        // function updateTime() {
+        //     const timeDisplay = document.getElementById('time-display');
+        //     if (timeDisplay) {
+        //         const now = new Date();
+        //         const hours = String(now.getHours()).padStart(2, '0');
+        //         const minutes = String(now.getMinutes()).padStart(2, '0');
+        //         const seconds = String(now.getSeconds()).padStart(2, '0');
+        //         timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+        //     }
+        // }
+        // setInterval(updateTime, 1000);
+        // updateTime();
+		
+		
+		
+		
+		document.getElementById('merger').addEventListener('click', function() {
+		    // window.location.href = './GraFx Json Merger.html';
+			window.open('./GraFx Json Merger.html', '_blank');
+		});
+		
+		
+
+        		
+		
+    </script>
+<script src="./js/toolplatform.js" type="text/javascript"></script>
+
+
+</body></html>

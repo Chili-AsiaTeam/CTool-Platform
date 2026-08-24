@@ -63,7 +63,7 @@
                 </div>
                 <div class="card-body">
                     <h3 id="ai-title">Chili GraFX Json Merger</h3>
-                    <p id="ai-desc"> The Chili GraFx Multi-Template Merger is a lightweight, local single-page web application. Its primary function is to use primarily to merge secondary directory layouts. </p>
+                    <p id="ai-desc"> The Chili GraFx Multi-Template Merger is a lightweight web application. Its primary function is to use primarily to merge secondary directory layouts (e.g., Transition, Impulse, Destination). </p>
                 </div>
                 <div class="card-footer">
                     <span>use the tool</span>
@@ -71,7 +71,7 @@
                 </div>
             </div>
 			
-			<div class="card" data-module="ai" id="card-ai">
+			<div class="card" id="merger_sec" data-module="ai" id="card-ai">
 			    <div class="card-header">
 			        <div class="card-icon">
 			            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -87,7 +87,7 @@
 			    </div>
 			    <div class="card-body">
 			        <h3 id="ai-title">Chili GraFX Json Merger Sec</h3>
-			        <p id="ai-desc">The Chili GraFx Multi-Template Merger is a lightweight, local single-page web application. Its primary function is to use primarily to merge tertiary directory content.</p>
+			        <p id="ai-desc">The Chili GraFx Multi-Template Merger is a lightweight web application. Its primary function is to use primarily to merge tertiary directory content.(e.g., 1:1 Transition, 1:2 Transition, 1:3 Transition under Transaction, etc.)</p>
 			    </div>
 			    <div class="card-footer">
 			        <span>use the tool</span>
@@ -95,7 +95,7 @@
 			    </div>
 			</div>
 
-           <div class="card" data-module="ai" id="card-ai">
+           <div class="card" id="reorder" data-module="ai" id="card-ai">
                <div class="card-header">
                    <div class="card-icon">
                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -121,7 +121,7 @@
                </div>
            </div>
 		   
-		   <div class="card" data-module="ai" id="card-ai">
+		   <div class="card" id="outlook" data-module="ai" id="card-ai">
 		       <div class="card-header">
 		           <div class="card-icon">
 		               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -243,8 +243,20 @@
 			window.open('./tools/GraFx Json Merger.html', '_blank');
 		});
 		
+		document.getElementById('merger_sec').addEventListener('click', function() {
+		    // window.location.href = './GraFx Json Merger.html';
+			window.open('./tools/Chili Json Merger Sec.html', '_blank');
+		});
 		
+		document.getElementById('reorder').addEventListener('click', function() {
+		    // window.location.href = './GraFx Json Merger.html';
+			window.open('./tools/Layout Restrictive Reorder Tool.html', '_blank');
+		});
 
+        document.getElementById('outlook').addEventListener('click', function() {
+		    // window.location.href = './GraFx Json Merger.html';
+			window.open('https://confluence.uhub.biz/spaces/VYRSHACHILIASIA/pages/965604810/%E5%9C%A8Outlook%E4%B8%8A%E5%8F%91%E9%80%81html%E6%A0%B7%E5%BC%8F%E5%86%85%E5%AE%B9', '_blank');
+		});
         		
 		
     </script>

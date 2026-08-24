@@ -3,8 +3,124 @@ body {
             background-color: #f4f5f7;
             color: #333;
             margin: 0;
-            padding: 40px 20px;
+            /* padding: 40px 20px; */
+			overflow: hidden;
         }
+		
+		:root {
+					--border-color: rgba(0, 102, 255, 0.12);
+					--accent-cyan: #0088ff;
+					--accent-purple: #7c3aed;
+		        }
+		/* 浅色网格背景 */
+		.grid-background {
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100vw;
+		    height: 100vh;
+		    background-size: 32px 32px;
+		    background-image: 
+		        linear-gradient(to right, rgba(0, 102, 255, 0.03) 1px, transparent 1px),
+		        linear-gradient(to bottom, rgba(0, 102, 255, 0.03) 1px, transparent 1px);
+		    z-index: 0;
+		    pointer-events: none;
+		}
+		
+		
+		/* canva效果 */
+		
+		/* Subtle technical background grid overlay */
+		.grid-overlay {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-image: 
+		        linear-gradient(to right, rgba(120, 150, 190, 0.05) 1px, transparent 1px),
+		        linear-gradient(to bottom, rgba(120, 150, 190, 0.05) 1px, transparent 1px);
+		    background-size: 60px 60px;
+		    z-index: 2;
+		    pointer-events: none;
+		}
+		
+		/* Fluid Wave Canvas wrapper with Gaussian blur */
+		#canvas-wrapper {
+		    position: absolute;
+		    top: -10%;
+		    left: -10%;
+		    width: 120%;
+		    /* height: 120%; */
+			height:100%;
+		    z-index: 1;
+		    /* filter: blur(65px); */
+			 filter: blur(20px);
+		    /* opacity: 0.88; */
+			opacity: 0.4;
+		    transform: translateZ(0);
+		}
+		canvas {
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		}
+		
+		
+		
+		header {
+		    position: relative;
+		    z-index: 10;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 20px 48px;
+		    backdrop-filter: blur(16px);
+		    -webkit-backdrop-filter: blur(16px);
+		    background: rgba(255, 255, 255, 0.65);
+		    border-bottom: 1px solid var(--border-color);
+			width: 100%;
+			height: 34px;
+		}
+		
+		.logo-container {
+		    display: flex;
+		    align-items: center;
+		    gap: 12px;
+			cursor: pointer;
+		}
+		
+		.logo-icon {
+		    width: 34px;
+		    height: 34px;
+		    border-radius: 8px;
+		    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    box-shadow: 0 4px 12px rgba(0, 136, 255, 0.3);
+		    color: #ffffff;
+		}
+		.logo-icon p{
+			font-size: 22px;
+			font-weight: bold;
+			line-height: 34px;
+			color: #ffffff;
+		}
+		
+		h1#main-title {
+		    font-size: 19px;
+		    font-weight: 600;
+		    letter-spacing: 0.5px;
+		    color: #0f172a;
+			padding: 0px;
+			    margin: 0px;
+			    border: navajowhite;
+		}
+		
+		
+		
+		
         .container {
             max-width: 750px;
             margin: 0 auto;
@@ -12,6 +128,9 @@ body {
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+			position: relative;
+			z-index: 100;
+			margin-top: 50px;
         }
         h1 {
             margin-top: 0;

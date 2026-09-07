@@ -47,7 +47,7 @@
         <!-- 功能模块网格 -->
         <div class="grid-container">
             
-            <div class="card" id="merger" data-module="ai" id="card-ai" >
+            <div class="card" id="merger" data-module="ai"  >
                 <div class="card-header">
                     <div class="card-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -71,7 +71,7 @@
                 </div>
             </div>
 			
-			<div class="card" id="merger_sec" data-module="ai" id="card-ai">
+			<div class="card" id="merger_sec" data-module="ai" >
 			    <div class="card-header">
 			        <div class="card-icon">
 			            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -95,7 +95,7 @@
 			    </div>
 			</div>
 
-           <div class="card" id="reorder" data-module="ai" id="card-ai">
+           <div class="card" id="reorder" data-module="ai"/>
                <div class="card-header">
                    <div class="card-icon">
                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -121,7 +121,7 @@
                </div>
            </div>
 		   
-		   <div class="card" id="outlook" data-module="ai" id="card-ai">
+		   <div class="card" id="outlook" data-module="ai" >
 		       <div class="card-header">
 		           <div class="card-icon">
 		               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -143,29 +143,37 @@
 		       </div>
 		   </div>
 
+           <div class="card" id="splitter" data-module="ai">
+               <div class="card-header">
+                   <div class="card-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- 顶部上半截文件 -->
+                        <path d="M14 2H6a2 2 0 0 0-2 2v4"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <path d="M20 8v1"></path>
+                        
+                        <!-- 底部下半截文件 -->
+                        <path d="M4 16v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path>
+                        
+                        <!-- 中间裁切剪刀符号 -->
+                        <circle cx="6" cy="12" r="2"></circle>
+                        <circle cx="18" cy="12" r="2"></circle>
+                        <path d="M7.8 11.1L12 12l4.2-0.9"></path>
+                        <path d="M7.8 12.9L12 12l4.2 0.9"></path>
+                      </svg>
+                   </div>
+                   <span class="card-badge">Chili tool</span>
+               </div>
+               <div class="card-body">
+                   <h3 id="ai-title">GraFx Layout Splitter & Change</h3>
+                   <p id="ai-desc">This tool is specifically designed for sorting layouts in Chili templates, addressing the issue that layout directories cannot be reordered within Chili templates.</p>
+               </div>
+               <div class="card-footer">
+                   <span>use the tool</span>
+                   <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+               </div>
+           </div>
 
-
-            <div class="card" data-module="inDev" id="card-devops">
-                <div class="card-header">
-                    <div class="card-icon">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						  <!-- 表盘外圈 -->
-						  <circle cx="12" cy="12" r="10"></circle>
-						  <!-- 指在 12 点和 3 点之间的指针（等待状态） -->
-						  <polyline points="12 6 12 12 16 14"></polyline>
-						</svg>
-                    </div>
-                    <span class="card-badge">In Dev</span>
-                </div>
-                <div class="card-body">
-                    <h3 id="devops-title" class="more_tool_wait">More tools are </br> in development.</h3>
-                    <!-- <p id="devops-desc">支持一键流水线构建、K8s 容器编排与无缝热更新体验。</p> -->
-                </div>
-               <!-- <div class="card-footer">
-                    <span>进入模块</span>
-                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div> -->
-            </div>
 
            <div class="card" data-module="inDev" id="card-devops">
                <div class="card-header">
@@ -251,6 +259,10 @@
 		document.getElementById('reorder').addEventListener('click', function() {
 		    // window.location.href = './GraFx Json Merger.html';
 			window.open('./tools/Layout Restrictive Reorder Tool.html', '_blank');
+		});
+		document.getElementById('splitter').addEventListener('click', function() {
+		    // window.location.href = './GraFx Json Merger.html';
+			window.open('./tools/GraFx Layout Splitter & Change(En).html', '_blank');
 		});
 
         document.getElementById('outlook').addEventListener('click', function() {

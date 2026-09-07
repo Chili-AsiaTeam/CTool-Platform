@@ -1,0 +1,714 @@
+<html data-type="html" data-identifier="cf8f4153-a7ad-4f51-b8ba-bca4fdf24d67" data-title="GraFx Layout Splitter &amp; Attribute Replacer" data-version="1" width="900" height="1100"><head>
+<meta charset="utf-8">
+<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<style>
+	
+	
+    * { box-sizing: border-box; padding: 0px;margin: 0px;}
+	:root {
+				--border-color: rgba(0, 102, 255, 0.12);
+				--accent-cyan: #0088ff;
+				--accent-purple: #7c3aed;
+	        }
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: #f4f6f8;
+        color: #1c2430;
+        /* padding: 24px; */
+    }
+	
+	
+	header {
+			    position: relative;
+			    z-index: 10;
+			    display: flex;
+			    justify-content: space-between;
+			    align-items: center;
+			    padding: 20px 48px;
+			    backdrop-filter: blur(16px);
+			    -webkit-backdrop-filter: blur(16px);
+			    background: rgba(255, 255, 255, 0.65);
+			    border-bottom: 1px solid var(--border-color);
+				width: 100%;
+				/* height: 34px; */
+			}
+			
+			.logo-container {
+			    display: flex;
+			    align-items: center;
+			    gap: 12px;
+				cursor: pointer;
+			}
+			
+			.logo-icon {
+			    width: 34px;
+			    height: 34px;
+			    border-radius: 8px;
+			    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    box-shadow: 0 4px 12px rgba(0, 136, 255, 0.3);
+			    color: #ffffff;
+			}
+			.logo-icon p{
+				font-size: 22px;
+				font-weight: bold;
+				line-height: 34px;
+				color: #ffffff;
+			}
+			
+			h1#main-title {
+			    font-size: 19px;
+			    font-weight: 600;
+			    letter-spacing: 0.5px;
+			    color: #0f172a;
+				padding: 0px;
+				    margin: 0px;
+				    border: navajowhite;
+			}
+	
+    .container { max-width: 820px; margin: 0 auto;margin-top: 50px; }
+    h1 { font-size: 24px; margin: 0 0 8px; text-align: center; color: #111; }
+    #desc { color: #5a6472; margin: 0 0 24px; font-size: 14px; line-height: 1.6; text-align: center; }
+    code { background: #e8eaed; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: "SF Mono", Consolas, monospace; }
+    
+    .card {
+        background: #fff;
+        border: 1px solid #e3e6ea;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .card h3 { margin: 0 0 16px; font-size: 16px; color: #111; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
+    .card h3 .tag { font-size: 11px; font-weight: 700; color: #16a34a; background: #e7f7ee; border-radius: 999px; padding: 3px 8px; margin-left: 8px; vertical-align: middle; }
+    
+    .upload-area { display: flex; align-items: center; }
+    .filebtn {
+        display: inline-block;
+        background: #2563eb;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background 0.3s;
+    }
+    .filebtn:hover { background: #1d4ed8; }
+    .filebtn input { display: none; }
+    #fileName { margin-left: 16px; font-size: 14px; color: #10b981; font-weight: 500; }
+    
+    /* Layout Selector Styles */
+    .checkbox-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px; }
+    .checkbox-item {
+        background: #f9fafb; border: 1px solid #e5e7eb; padding: 12px 15px;
+        border-radius: 8px; display: flex; align-items: center; cursor: pointer;
+        transition: all 0.2s;
+    }
+    .checkbox-item:hover { border-color: #3b82f6; background: #eff6ff; }
+    .checkbox-item input { margin-right: 12px; cursor: pointer; transform: scale(1.2); }
+    .checkbox-item span { font-weight: 500; color: #1f2937; font-size: 14px; }
+    
+    /* Options Styles */
+    .opt-row { display: flex; flex-direction: column; gap: 12px; }
+    .opt-row-horizontal { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .sub { margin-left: 28px; padding-left: 16px; border-left: 2px solid #eceef1; margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+    label.opt { font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    label.opt.master { font-weight: 700; color: #1f2937; font-size: 15px; }
+    label.opt input:disabled + span, label.opt input:disabled { opacity: .45; }
+    hr { border: none; border-top: 1px solid #eceef1; margin: 10px 0; }
+    
+    .input-group { display: flex; align-items: center; gap: 10px; }
+    .input-group label { font-size: 14px; font-weight: 600; color: #374151; }
+    .text-input {
+        font-size: 14px;
+        padding: 8px 12px;
+        border: 1px solid #cfd4da;
+        border-radius: 8px;
+        width: 220px;
+        font-family: "SF Mono", Consolas, monospace;
+        transition: border-color 0.2s;
+    }
+    .text-input:focus { outline: none; border-color: #2f6df6; box-shadow: 0 0 0 2px rgba(47,109,246,.15); }
+    .text-input:disabled { background: #f1f2f4; opacity: .55; cursor: not-allowed; }
+    .suffix-preview { font-size: 12.5px; color: #5a6472; }
+    .suffix-preview b { color: #16a34a; }
+    
+    .action-container { display: flex; flex-direction: column; gap: 12px; }
+    button.action {
+        background: #10b981;
+        color: #fff;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        width: 100%;
+        text-align: center;
+    }
+    button.action:disabled { background: #9ca3af; cursor: not-allowed; }
+    button.action:not(:disabled):hover { background: #059669; }
+    
+    #log {
+        background: #0f172a;
+        color: #d1e0ff;
+        border-radius: 8px;
+        padding: 16px;
+        font-family: "SF Mono", Consolas, monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-break: break-all;
+        max-height: 300px;
+        overflow: auto;
+        margin: 0;
+    }
+    .note { font-size: 12.5px; color: #8a929d; line-height: 1.6; margin: 0; }
+    
+    #actionArea { display: none; }
+</style>
+</head>
+<body>
+	
+	<header>
+	        <div class="logo-container">
+	            <div class="logo-icon">
+	                <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> -->
+					<p>C</p>
+	            </div>
+	            <h1 id="main-title">CTOOL Platform</h1>
+	        </div>
+	</header>
+	
+<div class="container">
+    <h1>GraFx Layout Splitter &amp; Attribute Replacer</h1>
+    <p id="desc">Upload a Master JSON file. Select Layouts to combine and export, with optional configuration for random ID replacement and appending suffixes to names.</p>
+
+    <!-- Upload Area -->
+    <div class="card">
+        <div class="upload-area">
+            <label class="filebtn">
+                Select JSON File
+                <input type="file" id="fileInput" accept=".json,application/json">
+            </label>
+            <span id="fileName">No file selected</span>
+        </div>
+    </div>
+
+    <!-- Main Processing Area (Hidden until file uploaded) -->
+    <div id="actionArea">
+        <!-- Layout Splitter Section -->
+        <div class="card">
+            <h3>1. Split &amp; Combine: Select Layouts to Export</h3>
+            <div class="checkbox-list" id="checkboxContainer"></div>
+            <div class="input-group" style="margin-top: 10px;">
+                <label for="fileNameSuffix">Export File Suffix:</label>
+                <input type="text" id="fileNameSuffix" class="text-input" placeholder="e.g., _Custom_Mix">
+            </div>
+            <p class="note" style="margin-top: 10px;">Note: The system will automatically extract selected Layouts, safely ignore corrupted arrays, and rebuild internal dependencies and variable visibility conditions.</p>
+        </div>
+
+        <!-- ID Replacer Section -->
+        <div class="card">
+            <h3>2. Internal ID Random Replacement</h3>
+            <div class="opt-row">
+                <label class="opt master"><input type="checkbox" id="enableIds"> <span>Enable ID Random Replacement (Generates unique 20-digit numbers)</span></label>
+            </div>
+            <div class="sub" id="idOptions">
+                <div class="opt-row">
+                    <label class="opt"><input type="radio" name="mode" value="ref" checked=""> <span>Maintain Reference Integrity (Recommended) — Synchronizes all references, font keys, embedded toolbar JSON, object keys, etc.</span></label>
+                    <!-- <label class="opt"><input type="radio" name="mode" value="literal"> <span>Replace 'id' Fields Only (Literal Mode) — Only replaces values where the field name is 'id', ignores references.</span></label> -->
+                </div>
+                <hr>
+                <div class="opt-row-horizontal">
+                    <label class="opt"><input type="checkbox" id="keepFonts" checked=""> <span>Keep compound IDs containing "::" (Font styles, etc.)</span></label>
+                    <label class="opt"><input type="checkbox" id="keepAssets" checked=""> <span>Keep external asset IDs (source.id)</span></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Name Replacer Section -->
+        <div class="card">
+            <h3>3. Append Suffix to Element Names <span class="tag">Customizable</span></h3>
+            <div class="opt-row">
+                <label class="opt master"><input type="checkbox" id="enableNames"> <span>Enable: Append suffix to Frame / Variable / Action names</span></label>
+            </div>
+            <div class="sub" id="nameOptions">
+                <div class="input-group">
+                    <label for="suffixInput">Suffix:</label>
+                    <input type="text" id="suffixInput" class="text-input" value="_sec" placeholder="e.g., _sec / _v2" maxlength="40" style="width: 150px;">
+                    <span class="suffix-preview">Preview: <code>Logo</code> → <code><b id="suffixPreview">Logo_sec</b></code></span>
+                </div>
+                <div class="opt-row-horizontal">
+                    <label class="opt"><input type="checkbox" id="sufFrames" checked=""> <span>Frame Names</span></label>
+                    <label class="opt"><input type="checkbox" id="sufVars" checked=""> <span>Variables</span></label>
+                    <label class="opt"><input type="checkbox" id="sufActions" checked=""> <span>Action Names</span></label>
+                </div>
+                <p class="note">Note: Automatically scans each Action script to synchronously replace exactly matched names enclosed in quotes. Unchecked categories will not affect code references.</p>
+            </div>
+        </div>
+
+        <!-- Export & Log Section -->
+        <div class="card action-container">
+            <button class="action" id="processBtn" disabled="">Process &amp; Export JSON</button>
+            <p class="note">Warning: Because the checkSum cannot be recalculated, if a validation error occurs during import, please 'Save As' in the system or manually remove the checkSum field.</p>
+        </div>
+    </div>
+
+    <!-- Log Card -->
+    <div class="card">
+        <h3>Execution Log</h3>
+        <pre id="log">Waiting for file upload...</pre>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // ---- DOM Elements ----
+    const fileInput = document.getElementById('fileInput');
+    const fileNameEl = document.getElementById('fileName');
+    const actionArea = document.getElementById('actionArea');
+    const checkboxContainer = document.getElementById('checkboxContainer');
+    const fileNameSuffixInput = document.getElementById('fileNameSuffix');
+    const processBtn = document.getElementById('processBtn');
+    const logEl = document.getElementById('log');
+
+    // ID Replace Elements
+    const enableIds = document.getElementById('enableIds');
+    const idOptions = document.getElementById('idOptions');
+    const keepFontsEl = document.getElementById('keepFonts');
+    const keepAssetsEl = document.getElementById('keepAssets');
+
+    // Name Replace Elements
+    const enableNames = document.getElementById('enableNames');
+    const nameOptions = document.getElementById('nameOptions');
+    const suffixInput = document.getElementById('suffixInput');
+    const suffixPreview = document.getElementById('suffixPreview');
+    const sufFrames = document.getElementById('sufFrames');
+    const sufVars = document.getElementById('sufVars');
+    const sufActions = document.getElementById('sufActions');
+
+    // ---- Global State ----
+    let originalJson = null;
+    let originalFileName = "";
+    let baseFileName = "";
+    const DEFAULT_NAME_SUFFIX = '_sec';
+    let CURRENT_NAME_SUFFIX = DEFAULT_NAME_SUFFIX;
+
+    // ID Replacing State
+    let usedIds = Object.create(null);
+    let idMapping = Object.create(null);
+    let keepFonts = true;
+    let keepAssets = true;
+
+    // Name Replacing State
+    let nameMaps = { frames: {}, variables: {}, actions: {} };
+    let enabledCats = { frames: false, variables: false, actions: false };
+    let codeReplacer = null;
+
+    // ---- Utilities ----
+    function hasOwn(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+    function log(msg) { logEl.textContent += '\n' + msg; logEl.scrollTop = logEl.scrollHeight; }
+    function resetLog(msg) { logEl.textContent = msg; }
+    function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+    // Toggle logic for UI Sections
+    function setDisabled(container, disabled) {
+        const inputs = container.querySelectorAll('input');
+        for (let i = 0; i < inputs.length; i++) inputs[i].disabled = disabled;
+    }
+    function syncEnabledUI() {
+        setDisabled(idOptions, !enableIds.checked);
+        setDisabled(nameOptions, !enableNames.checked);
+    }
+    function updateSuffixPreview() {
+        let v = suffixInput.value.trim();
+        let displaySuffix = v.length ? v : DEFAULT_NAME_SUFFIX;
+        suffixPreview.textContent = 'Logo' + displaySuffix;
+    }
+
+    enableIds.addEventListener('change', syncEnabledUI);
+    enableNames.addEventListener('change', syncEnabledUI);
+    suffixInput.addEventListener('input', updateSuffixPreview);
+    syncEnabledUI();
+    updateSuffixPreview();
+
+    // ---- File Parsing & Layout Extraction (Tool 1 Logic) ----
+    fileInput.addEventListener('change', function(e) {
+        let file = e.target.files[0];
+        if (!file) return;
+        originalFileName = file.name;
+        baseFileName = originalFileName.replace(/\.json$/i, '');
+        
+        let reader = new FileReader();
+        reader.onload = function(evt) {
+            try {
+                originalJson = JSON.parse(evt.target.result);
+                fileNameEl.textContent = "Loaded: " + originalFileName;
+                resetLog('✅ Successfully parsed JSON: ' + originalFileName + ' (' + evt.target.result.length + ' characters)');
+                parseFolders();
+            } catch(err) {
+                resetLog("❌ JSON parsing failed: " + err.message);
+                actionArea.style.display = "none";
+            }
+        };
+        reader.readAsText(file);
+    });
+
+    function parseFolders() {
+        if (!originalJson || !originalJson.layouts) return;
+        
+        // Find Default layout (Root)
+        let defaultLayout = originalJson.layouts.find(x => x.name === 'Default' || !x.parentId);
+        if (!defaultLayout) {
+            log("⚠️ Could not find 'Default' root Layout, which may affect parsing.");
+        }
+
+        // Find children by parentId
+        let topFolders = [];
+        if (defaultLayout) {
+            topFolders = originalJson.layouts.filter(x => x.parentId === defaultLayout.id);
+        } else {
+            // Fallback: list all layouts without parents
+            topFolders = originalJson.layouts.filter(x => !x.parentId);
+        }
+        
+        checkboxContainer.innerHTML = "";
+        
+        if (topFolders.length === 0) {
+            log("❌ Could not find subfolders under the root node.");
+            return;
+        }
+
+        topFolders.forEach(folder => {
+            let label = document.createElement('label');
+            label.className = 'checkbox-item';
+            
+            let cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.value = folder.id;
+            cb.dataset.name = folder.name;
+            cb.addEventListener('change', updateFileSuffixInput);
+            
+            let span = document.createElement('span');
+            span.innerText = folder.name;
+            
+            label.appendChild(cb);
+            label.appendChild(span);
+            checkboxContainer.appendChild(label);
+        });
+
+        actionArea.style.display = "block";
+        updateExportState();
+    }
+
+    function updateFileSuffixInput() {
+        let selected = Array.from(checkboxContainer.querySelectorAll('input:checked'));
+        if (selected.length === 0) {
+            fileNameSuffixInput.value = "";
+        } else if (selected.length <= 2) {
+            fileNameSuffixInput.value = selected.map(cb => cb.dataset.name.replace(/[^a-zA-Z0-9_-]/g, '')).join('_');
+        } else {
+            fileNameSuffixInput.value = "Combined_Mix";
+        }
+        updateExportState();
+    }
+
+    function updateExportState() {
+        let selected = Array.from(checkboxContainer.querySelectorAll('input:checked'));
+        processBtn.disabled = selected.length === 0;
+    }
+
+    // ---- Core Processing Logic ----
+    
+    // Generate random 20-digit string
+    function generateNewId() {
+        let s;
+        do {
+            s = String(Math.floor(Math.random() * 9) + 1);
+            for (let i = 0; i < 19; i++) s += Math.floor(Math.random() * 10);
+        } while (usedIds[s]);
+        usedIds[s] = true;
+        return s;
+    }
+
+    // [ID Logic] Collect all IDs
+    function collectIds(obj, parentKey) {
+        if (Array.isArray(obj)) {
+            for (let i = 0; i < obj.length; i++) collectIds(obj[i], parentKey);
+        } else if (obj && typeof obj === 'object') {
+            for (let k in obj) {
+                if (!hasOwn(obj, k)) continue;
+                let v = obj[k];
+                if (k === 'id' && typeof v === 'string' && v.length) {
+                    let skip = false;
+                    if (keepFonts && v.indexOf('::') !== -1) skip = true;
+                    if (keepAssets && parentKey === 'source') skip = true;
+                    if (!skip && !(v in idMapping)) idMapping[v] = generateNewId();
+                }
+                collectIds(v, k);
+            }
+        }
+    }
+
+    // [ID Logic] Transform References
+    function transformRef(obj, parentKey) {
+        if (Array.isArray(obj)) {
+            let arr = [];
+            for (let i = 0; i < obj.length; i++) arr.push(transformRef(obj[i], parentKey));
+            return arr;
+        }
+        if (obj && typeof obj === 'object') {
+            let out = {};
+            for (let k in obj) {
+                if (!hasOwn(obj, k)) continue;
+                let nk = (idMapping[k] !== undefined) ? idMapping[k] : k;
+                out[nk] = transformRef(obj[k], k);
+            }
+            return out;
+        }
+        if (typeof obj === 'string') {
+            if (parentKey === 'toolbar') {
+                try {
+                    let inner = JSON.parse(obj);
+                    return JSON.stringify(transformRef(inner, null));
+                } catch (e) { return obj; }
+            }
+            if (idMapping[obj] !== undefined) return idMapping[obj];
+            if (obj.indexOf('var.') === 0) {
+                let rest = obj.slice(4);
+                if (idMapping[rest] !== undefined) return 'var.' + idMapping[rest];
+            }
+        }
+        return obj;
+    }
+
+    // [ID Logic] Transform Literal
+    function transformLiteral(obj) {
+        if (Array.isArray(obj)) {
+            let arr = [];
+            for (let i = 0; i < obj.length; i++) arr.push(transformLiteral(obj[i]));
+            return arr;
+        }
+        if (obj && typeof obj === 'object') {
+            let out = {};
+            for (let k in obj) {
+                if (!hasOwn(obj, k)) continue;
+                if (k === 'id' && typeof obj[k] === 'string' && idMapping[obj[k]] !== undefined) {
+                    out[k] = idMapping[obj[k]];
+                } else {
+                    out[k] = transformLiteral(obj[k]);
+                }
+            }
+            return out;
+        }
+        return obj;
+    }
+
+    // [Name Logic] Collect Names
+    function collectNames(obj, parentKey) {
+        if (Array.isArray(obj)) {
+            for (let i = 0; i < obj.length; i++) collectNames(obj[i], parentKey);
+            return;
+        }
+        if (obj && typeof obj === 'object') {
+            if ((parentKey === 'frames' || parentKey === 'variables' || parentKey === 'actions')
+                && enabledCats[parentKey]
+                && typeof obj.name === 'string' && obj.name.length) {
+                if (!(obj.name in nameMaps[parentKey])) {
+                    nameMaps[parentKey][obj.name] = obj.name + CURRENT_NAME_SUFFIX;
+                }
+            }
+            for (let k in obj) {
+                if (!hasOwn(obj, k)) continue;
+                collectNames(obj[k], k);
+            }
+        }
+    }
+
+    // [Name Logic] Build Regex for Action scripts
+    function buildCodeReplacer() {
+        let list = [];
+        let seen = Object.create(null);
+        ['frames', 'variables'].forEach(function(cat) {
+            for (let name in nameMaps[cat]) {
+                if (!seen[name]) { seen[name] = 1; list.push(name); }
+            }
+        });
+        if (!list.length) return null;
+        list.sort(function(a, b) { return b.length - a.length; });
+        let re = new RegExp('(["\'`])(' + list.map(escapeRegex).join('|') + ')\\1', 'g');
+        return function (code) {
+            return code.replace(re, function (m, q, name) { return q + name + CURRENT_NAME_SUFFIX + q; });
+        };
+    }
+
+    // [Name Logic] Apply New Names and Replace Scripts
+    function applyNames(obj, parentKey) {
+        if (Array.isArray(obj)) {
+            for (let i = 0; i < obj.length; i++) applyNames(obj[i], parentKey);
+            return;
+        }
+        if (obj && typeof obj === 'object') {
+            if ((parentKey === 'frames' || parentKey === 'variables' || parentKey === 'actions')
+                && enabledCats[parentKey]
+                && typeof obj.name === 'string' && (obj.name in nameMaps[parentKey])) {
+                obj.name = nameMaps[parentKey][obj.name];
+            }
+            if (parentKey === 'actions' && codeReplacer && typeof obj.script === 'string') {
+                obj.script = codeReplacer(obj.script);
+            }
+            for (let k in obj) {
+                if (!hasOwn(obj, k)) continue;
+                applyNames(obj[k], k);
+            }
+        }
+    }
+
+    // ---- Execution Pipeline ----
+    processBtn.addEventListener('click', function() {
+        let selectedCbs = Array.from(checkboxContainer.querySelectorAll('input:checked'));
+        if (selectedCbs.length === 0) {
+            log("❌ Please select at least one Layout to export.");
+            return;
+        }
+
+        resetLog('▶ Starting process...');
+        
+        // 1. SPLIT LOGIC (Tool 1)
+        let doc = JSON.parse(JSON.stringify(originalJson)); 
+        let targetLayouts = [];
+        
+        function recursivelyCollectLayouts(layoutId) {
+            let l = doc.layouts.find(x => x.id === layoutId);
+            if (l && !targetLayouts.some(x => x.id === l.id)) {
+                targetLayouts.push(l);
+                let children = doc.layouts.filter(x => x.parentId === layoutId);
+                children.forEach(c => recursivelyCollectLayouts(c.id));
+            }
+        }
+        
+        let defaultLayout = doc.layouts.find(x => x.name === 'Default' || !x.parentId);
+        if (defaultLayout && !targetLayouts.some(x => x.id === defaultLayout.id)) {
+            targetLayouts.push(defaultLayout);
+        }
+        
+        selectedCbs.forEach(cb => recursivelyCollectLayouts(cb.value));
+        
+        // Fix childLayouts
+        targetLayouts.forEach(l => {
+            l.childLayouts = targetLayouts.filter(x => x.parentId === l.id).map(x => x.id);
+        });
+        doc.layouts = targetLayouts;
+        const keptLayoutIds = new Set(targetLayouts.map(l => l.id));
+        
+        // Fix active layout
+        if (!keptLayoutIds.has(doc.selectedLayoutId)) {
+            doc.selectedLayoutId = selectedCbs[0].value;
+        }
+        
+        // Fix Variables visibility
+        if (doc.variables) {
+            doc.variables.forEach(v => {
+                if (v.visibility && Array.isArray(v.visibility.layouts)) {
+                    v.visibility.layouts = v.visibility.layouts.filter(l => keptLayoutIds.has(l.layoutId));
+                }
+            });
+        }
+        
+        // Fix PrivateData Toolbar Map
+        if (doc.privateData && doc.privateData.toolbar) {
+            try {
+                let toolbarData = JSON.parse(doc.privateData.toolbar);
+                if (toolbarData.layoutMaps) {
+                    toolbarData.layoutMaps = toolbarData.layoutMaps.filter(map => keptLayoutIds.has(map.layoutId));
+                }
+                doc.privateData.toolbar = JSON.stringify(toolbarData);
+            } catch(e) {}
+        }
+        
+        log(`✓ Layout extraction complete, extracted ${targetLayouts.length} Layouts.`);
+
+        // 2. NAME REPLACE LOGIC (Tool 2)
+        if (enableNames.checked) {
+            let inputSuf = suffixInput.value.trim();
+            CURRENT_NAME_SUFFIX = inputSuf.length ? inputSuf : DEFAULT_NAME_SUFFIX;
+            
+            enabledCats = {
+                frames: sufFrames.checked,
+                variables: sufVars.checked,
+                actions: sufActions.checked
+            };
+            nameMaps = { frames: {}, variables: {}, actions: {} };
+            
+            collectNames(doc, null);
+            codeReplacer = buildCodeReplacer();
+            applyNames(doc, null);
+            
+            let fN = Object.keys(nameMaps.frames).length;
+            let vN = Object.keys(nameMaps.variables).length;
+            let aN = Object.keys(nameMaps.actions).length;
+            
+            log(`✓ [Name Suffix '${CURRENT_NAME_SUFFIX}'] update complete: frames(${fN}), variables(${vN}), actions(${aN})`);
+            if (codeReplacer) {
+                log(`✓ Action scripts scanned and frame/variable references synchronized.`);
+            }
+        } else {
+            log('- [Name Suffix] option unchecked, skipped.');
+        }
+
+        // 3. ID REPLACE LOGIC (Tool 2)
+        let finalDoc = doc;
+        if (enableIds.checked) {
+            let mode = document.querySelector('input[name="mode"]:checked').value;
+            keepFonts = keepFontsEl.checked;
+            keepAssets = keepAssetsEl.checked;
+            
+            usedIds = Object.create(null);
+            idMapping = Object.create(null);
+            
+            collectIds(doc, null);
+            let idKeys = Object.keys(idMapping);
+            
+            finalDoc = (mode === 'ref') ? transformRef(doc, null) : transformLiteral(doc);
+            
+            log(`✓ [ID Replacement] update complete. Mode: ${mode === 'ref' ? 'Maintain References' : 'Literal Only'}`);
+            log(`✓ Unique IDs replaced: ${idKeys.length}.`);
+        } else {
+            log('- [ID Replacement] option unchecked, skipped.');
+        }
+
+        // 4. PREPARE FILE & DOWNLOAD
+        let fileSuffix = fileNameSuffixInput.value.trim();
+        if (fileSuffix) fileSuffix = "_" + fileSuffix;
+        let outputName = `${baseFileName}${fileSuffix}.json`;
+        
+        let blob = new Blob([JSON.stringify(finalDoc)], {type: 'application/json;charset=utf-8'});
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = outputName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function() { URL.revokeObjectURL(url); }, 2000);
+        
+        log(`\n🎉 Processing complete! File downloaded automatically: ${outputName}`);
+    });
+});
+
+document.querySelector('.logo-container').addEventListener('click', function() {
+	    // window.location.href = './GraFx Json Merger.html';
+		// window.open('../toolPlatform.html');
+		window.location.href = "../toolPlatform.html";
+	});
+
+
+</script>
+
+</body></html>
